@@ -61,4 +61,10 @@ matriceAdj = [[0, 2, 4, 0, 0, 0],
               ]
 g = Graphe(matriceAdj)
 g.dijkstra(1)
-test
+
+#Trier les noms des stations par ordre alphabétique :
+s=[]
+for i in range (0,len(S)) :
+s.append(S[i][0])
+s.sort()
+
