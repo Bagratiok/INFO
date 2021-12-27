@@ -61,4 +61,3 @@ matriceAdj = [[0, 2, 4, 0, 0, 0],
               ]
 g = Graphe(matriceAdj)
 g.dijkstra(1)
-test
