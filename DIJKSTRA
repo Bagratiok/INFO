@@ -71,3 +71,9 @@ for i in range (0,len(S)) :
 s.append(S[i][0])
 s.sort()
 
+
+#Afficher le plan des métro parisiens
+from PIL import Image
+im = Image.open('plan_metro_paris.jpg')
+im.show()
+
