@@ -96,3 +96,16 @@ from PIL import Image
 im = Image.open('plan_metro_paris.jpg')
 im.show()
 
+#Godfried
+
+#Afficher les stations une fois la première lettre entrée (départ) :
+a = 0
+L1 = []
+for i in L:
+    if n == i[0]:
+        L1.append(i)
+        print(a, i)
+        a += 1
+start = int(input("Entrez le numéro de la station de départ : "))
+station = L1[start]
+print("Vous avez choisi la station de départ : ", station)
