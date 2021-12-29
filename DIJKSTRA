@@ -92,7 +92,8 @@ def conversion(heure):
 
 #fin joséphine
 
-#Godfried
+#Godfried : version modifiée le 29/12, j'ai perfectionné le programme pour éviter des erreurs et que ça soit + interactif
+#j'ai également implémenter une partie pour demander l'heure de départ
 
 #Moteur de recherche (arrivée/départ) :
 confirmbis = "Non"
@@ -106,30 +107,61 @@ while confirmbis == "Non" :
 'Hoche', 'Hôtel de Ville', 'Invalides', 'Iéna', 'Jacques-Bonsergent', 'Jasmin', 'Jaurès', 'Javel-André-Citroen', 'Jourdain', 'Jules Joffrin', 'Jussieu', 'Kléber', 'La Chapelle', 'La Courneuve-8-Mai-1945', 'La Défense (Grande Arche)', 'La Fourche', 'La Motte-Picquet-Grenelle', 'La Muette', 'La Tour-Maubourg', 'Lamarck-Caulaincourt', 'Laumière', 'Le Kremlin-Bicêtre', 'Le Peletier', 'Ledru-Rollin', 'Les Agnettes', 'Les Gobelins', 'Les Halles', "Les Sablons (Jardin d'acclimatation)", 'Liberté', 'Liège', 'Louis Blanc', 'Louise Michel', 'Lourmel', 'Louvre-Rivoli', 'Mabillon', 'Madeleine', "Mairie d'Issy", 'Mairie de Clichy', 'Mairie de Montreuil', 'Mairie de Montrouge', 'Mairie des Lilas', 'Maison Blanche', 'Maisons-Alfort-Les Juilliottes', 'Maisons-Alfort-Stade', 'Malakoff-Plateau de Vanves', 'Malakoff-Rue Etienne Dolet', 'Malesherbes', 'Maraîchers', 'Marcadet-Poissonniers', 'Marcel Sembat', 'Marx-Dormoy', 'Maubert-Mutualité', 'Michel Bizot', 'Michel-Ange-Auteuil', 'Michel-Ange-Molitor', 'Miromesnil', 'Monceau', 'Montgallet', 'Montparnasse-Bienvenue', 'Mouton-Duvernet', 'Ménilmontant', 'Nation', 'Nationale', 'Notre-Dame de Lorette', 'Notre-Dame des Champs', 'Oberkampf', 'Odéon', 'Olympiades', 'Opéra', 'Ourcq', 'Palais-Royal (Musée du Louvre)', 'Parmentier', 'Passy', 'Pasteur', 'Pelleport', 'Pereire', 'Pernety', 'Philippe Auguste', 'Picpus', 'Pigalle', 'Place Monge (Jardin des Plantes)', "Place d'Italie", 'Place de Clichy', 'Place des Fêtes', 'Plaisance', 'Pointe du Lac', 'Poissonnière', 'Pont Marie (Cité des Arts)', 'Pont Neuf', 'Pont de Levallois-Bécon', 'Pont de Neuilly', 'Pont de Sèvres', 'Porte Dauphine (Maréchal de Lattre de Tassigny)', 
 'Porte Dorée', 'Porte Maillot', "Porte d'Orléans (Général Leclerc)", 'Porte de Bagnolet', 'Porte de Champerret', 'Porte de Charenton', 'Porte de Clichy', 'Porte de Clignancourt', 'Porte de Montreuil', 'Porte de Pantin', 'Porte de Saint-Cloud', 'Porte de Vanves', 'Porte de Versailles', 'Porte de Vincennes', 'Porte de la Chapelle', 'Porte de la Villette', 'Porte des Lilas', 'Pré-Saint-Gervais', 'Pyramides', 'Pyrénées', 'Père-Lachaise', 'Quai de la Gare', 'Quai de la Rapée', 'Quatre Septembre', 'Rambuteau', 'Ranelagh', 'Raspail', 'Rennes', 'Reuilly-Diderot', 'Richard-Lenoir', 'Richelieu-Drouot', 'Riquet', 'Robespierre', 'Rome', 'Rue Saint-Maur', 'Rue de la Pompe (Avenue Georges Mandel)', 'Rue des Boulets', 'Rue du Bac', 'Réaumur-Sébastopol', 'République', 'Saint-Ambroise', 'Saint-Augustin', 'Saint-Fargeau', 'Saint-François-Xavier', 'Saint-Georges', 'Saint-Germain des Prés', 'Saint-Jacques', 'Saint-Lazare', 'Saint-Mandé', 'Saint-Marcel', 'Saint-Michel', 'Saint-Paul (Le Marais)', 'Saint-Philippe du Roule', 'Saint-Placide', 'Saint-Sulpice', 'Saint-Sébastien-Froissart', 'Sentier', 'Simplon', 'Solférino', 'Stalingrad', 'Strasbourg-Saint-Denis', 'Sully-Morland', 'Sèvres-Babylone', 'Sèvres-Lecourbe', 'Ségur', 'Temple', 'Ternes', 'Tolbiac', "Trinité-d'Estienne d'Orves", 'Trocadéro', 'Tuileries', 'Télégraphe', 'Vaneau', 'Varenne', 'Vaugirard (Adolphe Chérioux)', 'Vavin', 'Victor Hugo', 'Villejuif-Louis Aragon', 'Villejuif-Léo Lagrange', 'Villejuif-Paul Vaillant Couturier (Hôpital Paul Brousse)', 'Villiers', 'Volontaires', 'Voltaire (Léon Blum)', 'Wagram']
     a = 0
+    test = False
     L1 = []
     for i in L:
         if n == i[0]:
             L1.append(i)
             print(a, i)
             a += 1
+            test = True
+    if test == False:
+        print("Votre station n'est pas répertoriée.")
+        break
     start = int(input("Entrez le numéro de la station de départ : "))
+    if start >= len(L1):
+        break
     depart = L1[start]
     confirm = input("Vous avez choisi la station de départ : " + depart + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
-
     if confirm == "Oui":
         N = input("Entrez la première lettre de votre station d'arrivée (en majuscules) : ")
         A = 0
+        test2 = False
         L2 = []
         for I in L:
             if N == I[0]:
                 L2.append(I)
                 print(A, I)
                 A += 1
-        arrival = int(input("Entrez le numéro de la station d'arrivée : "))
-        arrivee = L2[arrival]
-        confirmbis = input("Vous avez choisi la station d'arrivée : " + arrivee + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
-print("Itinéraire : " + depart + " --> " + arrivee)
+                test2 = True
+        if test2 == False:
+            print("Votre station n'est pas répertioriée, veuillez recommencer.")
+            break
+        while test2 == True:
+            arrival = int(input("Entrez le numéro de la station d'arrivée : "))
+            if arrival >= len(L2):
+                break
+            arrivee = L2[arrival]
+            confirmbis = input("Vous avez choisi la station d'arrivée : " + arrivee + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
+            if confirmbis == "Non":
+                break
+            test2 = False
+    else :
+        break
+    print("Itinéraire : " + depart + " --> " + arrivee)
+    
+#j'ai utilisé vla les breaks pck flemme de mettre des boucles partout pour s'y perdre    
 
+H = input("Voulez vous partir maintenant ? Répondez Oui ou Non : ")
+    if H == "Oui":
+        import  datetime
+        t = datetime.datetime.now()
+        h = t.hour
+        m = t.minute
+        print("Départ de " + depart + " prévu à " + str(h) + ":" + str(m))
+    else:
+        heure = input("Entrez l'heure de départ (sous le format xx:xx) : ")
+        print("Départ de " + depart + " prévu à " + str(conversion(heure)) + ".")
 
 #Afficher le plan des métro parisiens
 from PIL import Image
