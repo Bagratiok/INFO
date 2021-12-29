@@ -1,6 +1,7 @@
 import math
- 
- 
+
+#Algorithme de Dijkstra
+
 class Graphe():
  
     def __init__(self, noeuds):
@@ -64,18 +65,18 @@ g.dijkstra(1)
 
 #joséphine: j'ai fait deux questions du sujet des potes d'estelle
 
-#importer le fichier
-#donnees doit etre dans le meme répertoire
+#Importer le fichier
+#Donnees doit etre dans le meme répertoire
 import Donnees
 S, L = Donnees.S, Donnees.L
 
-#classement par ordre alphabétique
+#Classement par ordre alphabétique
 s=[]
 for i in range (0,len(S)) :
     s.append(S[i][0])
 s.sort()
 
-#conversion des heures
+#Conversion des heures
 def conversion(heure):
     if (type(heure)== str) :
     #on fait l'hypothèse que l'heure est toujours sous la forme "xx:xx"
@@ -90,11 +91,6 @@ def conversion(heure):
         return new_heure
 
 #fin joséphine
-
-#Afficher le plan des métro parisiens
-from PIL import Image
-im = Image.open('plan_metro_paris.jpg')
-im.show()
 
 #Godfried
 
@@ -134,3 +130,8 @@ while confirmbis == "Non" :
         confirmbis = input("Vous avez choisi la station d'arrivée : " + arrivee + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
 print("Itinéraire : " + depart + " --> " + arrivee)
 
+
+#Afficher le plan des métro parisiens
+from PIL import Image
+im = Image.open('plan_metro_paris.jpg')
+im.show()
