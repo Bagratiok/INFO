@@ -162,7 +162,7 @@ while confirmbis == "Non" :
                 break
             arrivee = L2[arrival]
             confirmbis = input("Vous avez choisi la station d'arrivée : " + arrivee + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
-            if confirmbis == "Non":
+            if confirmbis == "Non" or arrivee == depart:
                 break
             test2 = False
     else :
