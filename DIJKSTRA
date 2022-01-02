@@ -1,6 +1,6 @@
-import math
-
 #Algorithme de Dijkstra
+
+import math
 
 class Graphe():
  
@@ -62,6 +62,25 @@ matriceAdj = [[0, 2, 4, 0, 0, 0],
               ]
 g = Graphe(matriceAdj)
 g.dijkstra(1)
+
+#Estelle: pour faire Dijkstra avec les données qu'on a
+#J'ai utilisé les durées entre les stations (dans la liste L) qui m'ont permis de faire une matrice que j'ai appelé Mat
+Mat = []
+for i in L :
+    Mat.append(i[3])
+
+#j'ai compléter dans les sous-listes avec des 0 pour qu'elles aient toutes la même taille, sinon y'avait des out of range
+max = 0
+for m in Mat :
+    if len(m)>max:
+        max = len(m)
+for n in Mat :
+    while len(n)<max:
+        n.append(0)
+
+g = Graphe(Mat)
+g.dijkstra(1)
+#Je suis pas sûre à 100% que c'est ça qu'il faut faire, à vérifier
 
 #joséphine: j'ai fait deux questions du sujet des potes d'estelle
 
