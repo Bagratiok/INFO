@@ -80,7 +80,8 @@ for n in Mat :
 
 g = Graphe(Mat)
 g.dijkstra(1)
-#Je suis pas sûre à 100% que c'est ça qu'il faut faire, à vérifier
+#C'est pas exactement ça qu'il faut faire mais c'est l'idée
+#J'ai pas bien compris tout le principe de l'algorithme de Dijkstra en fait je crois, parce que là je met sur le même plan toutes les stations de métro des différentes lignes c'est bizarre
 
 #joséphine: j'ai fait deux questions du sujet des potes d'estelle
 
