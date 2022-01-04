@@ -99,7 +99,7 @@ print(ListeCorrespondances[2][12])
 import Donnees
 S, L = Donnees.S, Donnees.L
 
-#Classement par ordre alphabétique
+#Classement des stations par ordre alphabétique
 s=[]
 for i in range (0,len(S)) :
     s.append(S[i][0])
