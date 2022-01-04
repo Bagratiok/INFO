@@ -75,6 +75,22 @@ for i in range (0, len(S)) :
     LignesStations.append(ini)
 print(LignesStations)
 
+#Créer la liste de correspondances
+
+ListeCorrespondances = []
+for ligne in range (1,16) :
+    liste = []
+    for station in range (0,len(LignesStations)) :
+        if len(LignesStations[station]) == 1 :
+            liste.append([])
+        else :
+            if ligne in LignesStations[station] :
+                liste.insert(ligne,station)
+    ListeCorrespondances.append(liste)
+print(ListeCorrespondances)
+print(ListeCorrespondances[2][12])
+
+#ça ne marche pas mais c'est un début ...
 
 #joséphine: j'ai fait deux questions du sujet des potes d'estelle
 
