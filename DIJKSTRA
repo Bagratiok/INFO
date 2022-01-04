@@ -198,3 +198,54 @@ H = input("Voulez vous partir maintenant ? Répondez Oui ou Non : ")
 from PIL import Image
 im = Image.open('plan_metro_paris.jpg')
 im.show()
+
+# joséphine 04/01
+
+#algorithme dijkstra de wikipédia
+#d'abord on a des fonctions annexes qui nous seront utiles dans l'algo
+
+#initialisation
+import Donnees
+S, L = Donnees.S, Donnees.L
+
+
+def Initialisation(G,départ):
+    d = []*len(S) #-> ça je suis pas du tout sure, parce que j'ai pas compris ce que c'était d
+    for station in S:
+        d[S.index(station)]= "infini" #on initialise les sommets
+    d[S.index(départ)]= 0 # la distance au départ est nulle
+
+#Recherche d'un noeud de distance minimale
+
+def Trouve_min (Q): #Q est le complémentaire de P, qui est un sous graphe de G
+    mini = "infini" #ou une valeur très importante comme ça on peut comparer
+    sommet = -1
+    for station in Q:
+        if d[station] < mini: # il faut qu'on crée une liste avec les temps de trajet
+            mini = d[station]
+            sommet = station
+    return sommet
+
+#mise à jour des distances
+def Maj_distances(s1,s2):
+    if (d[s2] > d[s1] + poids(s1,s2)): # on doit encore créer la fonction poids
+        #si la distance de départ à s2 est plus grande que de départ à s1 puis de s1 à s2
+        #j'ai pas trop compris la
+        d[s2] = d[s1] + poids(s1, s2) # on prend ce chemin qui est plus en notant par ou on passe
+        prédécesseur[s2] = s1
+
+#fonction principale
+
+def Dijkstra(G, Poids, départ):
+    Initialisation(G, départ)
+    Q = S #? ça doit être l'ensemble de tous les noeuds
+    while (Q != []): #tant que Q n'est pas un ensemble vide
+        s1 = Trouve_min(Q)
+        Q = #Q privé de s1
+        for s2 in voisins(s1): #à créer
+            Maj_distances(s1, s2)
+#j'ai pas compris la suite, l'algo ou on ajoute la station d'arrivée
+
+
+
+
