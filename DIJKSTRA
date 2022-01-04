@@ -63,25 +63,18 @@ matriceAdj = [[0, 2, 4, 0, 0, 0],
 g = Graphe(matriceAdj)
 g.dijkstra(1)
 
-#Estelle: pour faire Dijkstra avec les données qu'on a
-#J'ai utilisé les durées entre les stations (dans la liste L) qui m'ont permis de faire une matrice que j'ai appelé Mat
-Mat = []
-for i in L :
-    Mat.append(i[3])
+#Estelle: 
+#Créer une liste de longueur n, indiquant pour chaque station les lignes sur lesquelles elle se trouve.
 
-#j'ai compléter dans les sous-listes avec des 0 pour qu'elles aient toutes la même taille, sinon y'avait des out of range
-max = 0
-for m in Mat :
-    if len(m)>max:
-        max = len(m)
-for n in Mat :
-    while len(n)<max:
-        n.append(0)
+LignesStations = []
+for i in range (0, len(S)) :
+    ini = []
+    for k in range (0,16) :
+        if i in L[k][2] :
+            ini.append(k)
+    LignesStations.append(ini)
+print(LignesStations)
 
-g = Graphe(Mat)
-g.dijkstra(1)
-#C'est pas exactement ça qu'il faut faire mais c'est l'idée
-#J'ai pas bien compris tout le principe de l'algorithme de Dijkstra en fait je crois, parce que là je met sur le même plan toutes les stations de métro des différentes lignes c'est bizarre
 
 #joséphine: j'ai fait deux questions du sujet des potes d'estelle
 
