@@ -78,15 +78,17 @@ print(LignesStations)
 #Créer la liste de correspondances
 
 ListeCorrespondances = []
-for ligne in range (1,16) :
-    liste = []
-    for station in range (0,len(LignesStations)) :
-        if len(LignesStations[station]) == 1 :
-            liste.append([])
-        else :
-            if ligne in LignesStations[station] :
-                liste.insert(ligne,station)
-    ListeCorrespondances.append(liste)
+for ligne in range (0,16) :
+    liste1 = []
+    for ligne2 in range (0,16) :
+        liste2 = []
+        for station in range (0,len(LignesStations)) :
+            if ligne2 not in LignesStations[station] :
+                break
+            if (ligne2 in LignesStations[station]) and (ligne in LignesStations[station]) :   
+                liste2.append(station)
+        liste1.append(liste2)
+    ListeCorrespondances.append(liste1)
 print(ListeCorrespondances)
 print(ListeCorrespondances[2][12])
 
