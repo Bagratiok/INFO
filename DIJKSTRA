@@ -1,3 +1,5 @@
+#Créer un dossier avec le jeu de données, l'image du plan des métros etc pour que ce soit plus simple (on leu envoie tout le dossier directement)
+
 #Algorithme de Dijkstra
 
 import math
