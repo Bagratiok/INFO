@@ -67,6 +67,7 @@ g.dijkstra(1)
 
 #Estelle: 
 #Créer une liste de longueur n, indiquant pour chaque station les lignes sur lesquelles elle se trouve.
+#validé, faire attention au décalage des lignes
 
 LignesStations = []
 for i in range (0, len(S)) :
@@ -77,22 +78,6 @@ for i in range (0, len(S)) :
     LignesStations.append(ini)
 print(LignesStations)
 
-#Créer la liste de correspondances
-
-ListeCorrespondances = []
-for ligne in range (0,16) :
-    liste1 = []
-    for ligne2 in range (0,16) :
-        liste2 = []
-        for station in range (0,len(LignesStations)) :
-            if ligne2 not in LignesStations[station] :
-                break
-            if (ligne2 in LignesStations[station]) and (ligne in LignesStations[station]) :   
-                liste2.append(station)
-        liste1.append(liste2)
-    ListeCorrespondances.append(liste1)
-print(ListeCorrespondances)
-print(ListeCorrespondances[2][12])
 
 #ça ne marche pas mais c'est un début ...
 
