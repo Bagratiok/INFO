@@ -1,70 +1,83 @@
 #Créer un dossier avec le jeu de données, l'image du plan des métros etc pour que ce soit plus simple (on leu envoie tout le dossier directement)
 
+from Donnees import L, S
+
+#Je crée une classe station pour manipuler plus facilement les données
+
+class Station:
+    def __init__(self, num):
+        self.nom = S[num][0]
+
+        self.listeligne = []
+        self.listevoisins = []
+        self.listedistances = []
+
+        for ligne in L :
+            for i in range (0, len(ligne[2])):
+                station = ligne[2][i]
+                if station == num :
+                    if i != len(ligne[2])-1 :
+                        self.listevoisins.append(ligne[2][i+1])
+                        self.listeligne.append(ligne[0])
+                        self.listedistances.append(ligne[3][i])
+                    if i != 0 :
+                        self.listevoisins.append(ligne[2][i-1])
+                        self.listeligne.append(ligne[0])
+                        self.listedistances.append(ligne[3][i-1])
+                    break
+        
+listestations = [Station(i) for i in range (0, len(S))]
+
 #Algorithme de Dijkstra
 
-import math
+def Dijkstra (depart, arrivee, graphe):
+    
+    distance = [float('inf')]*len(graphe)
+    distance[depart] = 0
+    noeudcourant = depart
+    parent = [0]*len(graphe)
+    visite = []
 
-class Graphe():
- 
-    def __init__(self, noeuds):
-        self.matriceAdj = noeuds.copy() #pk pas self.matriceAdj = noeuds ?
- 
-    def Afficher(self, src, dist):
-        print("les chemins les plus courts allant de ", src, " est : ")
-        for noeud in range(len(self.matriceAdj)):
-            print((noeud+1), "\t", dist[noeud])
- 
-    def minDistance(self, dist, S, T):
- 
-        # Initialiser la distance minimale pour le nœud
-        min = math.inf
-        min_index = -1
- 
-        for v in T:
-            if dist[v-1] < min:
-                min = dist[v-1]
-                min_index = v-1
- 
-        # supprimer de T et ajouter dans S
-        T.remove(min_index+1)
-        S.append(min_index+1)
-        return min_index
- 
-    def dijkstra(self, src):
- 
-        dist = [math.inf] * len(self.matriceAdj)
-        precedence = [-1] * len(self.matriceAdj)
-        dist[src-1] = 0
-        precedence[src-1] = src-1
-        S = []
-        T = [(i+1) for i in range(len(self.matriceAdj))]
- 
-        while len(S) < len(self.matriceAdj):
- 
-            # Choisir un sommet u qui n'est pas dans l'ensemble S et
-            # qui a une valeur de distance minimale
-            u = self.minDistance(dist, S, T)
- 
-            # relaxation des sommets
-            for v in range(len(self.matriceAdj)):
-                if (self.matriceAdj[u][v] > 0) and (dist[v] > (dist[u] + self.matriceAdj[u][v])):
-                    dist[v] = dist[u] + self.matriceAdj[u][v]
-                    precedence[v] = u
-        self.Afficher(src, dist)
- 
- 
-# Test
-# les sommets sont numérotés à partir de 1
-matriceAdj = [[0, 2, 4, 0, 0, 0],
-              [0, 0, 1, 0, 7, 0],
-              [0, 0, 0, 3, 0, 0],
-              [0, 0, 0, 0, 2, 5],
-              [0, 0, 0, 0, 0, 1],
-              [0, 0, 0, 0, 0, 0],
-              ]
-g = Graphe(matriceAdj)
-g.dijkstra(1)
+    while noeudcourant != arrivee :
+        stationcourante = graphe[noeudcourant]
+        for i in range (0, len(stationcourante.listevoisins)) :
+            voisin = stationcourante.listevoisins[i]
+            if voisin in visite :
+                continue
+            nouvelledistance = distance[noeudcourant] + stationcourante.listedistances[i]
+            if distance[voisin] > nouvelledistance :
+                distance[voisin] = nouvelledistance
+                parent[voisin] = noeudcourant
 
+        visite.append(noeudcourant)
+
+        minimum = float('inf')
+        indice_minimum = 0
+        for i in range (0, len(graphe)) :
+            if i not in visite :
+                if distance[i] < minimum :
+                    minimum = distance[i]
+                    indice_minimum = i
+        noeudcourant = indice_minimum
+
+    itineraire = []
+    noeud = arrivee
+    while noeud != depart : 
+        itineraire.append(noeud)
+        noeud = parent[noeud]
+    itineraire.append(depart)
+    itineraire.reverse()
+
+    return (itineraire)
+
+#Exemple entre la station Denfert-Rochereau et la station Nation :
+Dijkstra(93,4,listestations)
+#Ca renvoie [93, 124, 123, 122, 113, 121, 120, 119, 118, 6, 5, 4] avec 93 la station Denfert-Rochereau, et 4 Nation
+#Si on regarde à la fin il fait plein de changements mais techniquement c'est le plus court chemin
+
+
+
+#Du coup ça c'est inutile, on peut peut-être supprimer ?
 #Estelle: 
 #Créer une liste de longueur n, indiquant pour chaque station les lignes sur lesquelles elle se trouve.
 #validé, faire attention au décalage des lignes
@@ -79,7 +92,6 @@ for i in range (0, len(S)) :
 print(LignesStations)
 
 
-#ça ne marche pas mais c'est un début ...
 
 #joséphine: j'ai fait deux questions du sujet des potes d'estelle
 
@@ -185,102 +197,5 @@ H = input("Voulez vous partir maintenant ? Répondez Oui ou Non : ")
 from PIL import Image
 im = Image.open('plan_metro_paris.jpg')
 im.show()
-
-# joséphine 04/01
-
-#algorithme dijkstra de wikipédia
-#d'abord on a des fonctions annexes qui nous seront utiles dans l'algo
-
-#initialisation
-import Donnees
-S, L = Donnees.S, Donnees.L
-
-
-def Initialisation(G,départ):
-    d = []*len(S) #-> ça je suis pas du tout sure, parce que j'ai pas compris ce que c'était d
-    for station in S:
-        d[S.index(station)]= "infini" #on initialise les sommets
-    d[S.index(départ)]= 0 # la distance au départ est nulle
-
-#Recherche d'un noeud de distance minimale
-
-def Trouve_min (Q): #Q est le complémentaire de P, qui est un sous graphe de G
-    mini = "infini" #ou une valeur très importante comme ça on peut comparer
-    sommet = -1
-    for station in Q:
-        if d[station] < mini: # il faut qu'on crée une liste avec les temps de trajet
-            mini = d[station]
-            sommet = station
-    return sommet
-
-#mise à jour des distances
-def Maj_distances(s1,s2):
-    if (d[s2] > d[s1] + poids(s1,s2)): # on doit encore créer la fonction poids
-        #si la distance de départ à s2 est plus grande que de départ à s1 puis de s1 à s2
-        #j'ai pas trop compris la
-        d[s2] = d[s1] + poids(s1, s2) # on prend ce chemin qui est plus en notant par ou on passe
-        prédécesseur[s2] = s1
-
-#fonction principale
-
-def Dijkstra(G, Poids, départ):
-    Initialisation(G, départ)
-    Q = S #? ça doit être l'ensemble de tous les noeuds
-    while (Q != []): #tant que Q n'est pas un ensemble vide
-        s1 = Trouve_min(Q)
-        Q = #Q privé de s1
-        for s2 in voisins(s1): #à créer
-            Maj_distances(s1, s2)
-#j'ai pas compris la suite, l'algo ou on ajoute la station d'arrivée
-
-#proposition d'algo à partir du travail de Joséphine, y a un truc qui bug mais jsp quoi j'ai demand à Léonard, mais try it!
-
-import math
-S = [x for x in range(284)] #ID des stations, de 0 à 283
-class Graph():
-
-    def __init__(self,noeuds):
-        self.d =[math.inf]*len(S)  #init d
-        self.M = noeuds
-
-    def Trouve_min (self,d,S,T):
-        min = math.inf #valeur très importante comme ça on peut comparer
-        sommet = -1
-        for station in S:
-            if d[station] < min: # c'est le truc avec tout à l'infini
-                min = d[station]
-                sommet = station
-        S.remove(sommet) #on retire les stations par où on est passé
-        T.append(sommet)
-        return sommet
-
-    def Maj_distances(self,d,s1,s2):
-        predecesseur = [-1]*len(S)
-        if d[s2] > d[s1] + M[s1][s2]: #le poids est la valeur dans la matrice d'adjacence de s1)
-            d[s2] = d[s1] + M[s1][s2]
-            predecesseur[s2] = s1 #on note par ou on est passé
-
-    def dijkstra(self,depart,arrivee):
-        T = [] #la liste des stations du + court chemin
-        self.d[depart] = 0 #attention vérifier que départ renvoie bien l'ID de la station dans l'ordre de S
-        self.depart = depart
-        self.arrivee = arrivee
-        while not (arrivee in T): #condition pour arrêter l'algo
-            s1 = self.Trouve_min(self.d,S,T)
-            for s2 in range(len(M[s1])-1):
-                self.Maj_distances(self.d,s1,s2)
-        print(T)
-
-
-
-M = [[0, 2, 4, 0, 0, 0],[0, 0, 1, 0, 7, 0],[0, 0, 0, 3, 0, 0],[0, 0, 0, 0, 2, 5],[0, 0, 0, 0, 0, 1],[0, 0, 0, 0, 0, 0],]
-C = [[0], [0], [0], [0], [0, 1, 6, 10], [0, 9], [0, 15], [0, 5, 9], [0], [0, 12], [0, 4, 7, 12, 15], [0], [0, 7], [0], [0, 9, 13], [0, 14], [0, 10], [0], [0, 1, 6], [0], [0], [0], [0], [0], [0], [1], [1], [1], [1, 2], [1], [1], [1, 12], [1], [1, 5, 8], [1, 5, 7], [1], [1, 4], [1], [1, 13], [1], [1, 14], [1], [1, 2], [1], [1], [1], [1], [1], [2], [2], [2, 3], [2], [2], [2, 5, 9, 10, 12], [2], [2, 12], [2, 4], [2], [2], [2], [2, 7, 9], [2, 10], [2, 13, 14, 15], [2], [2], [2], [2], [2], [2], [2], [2], [3, 12], [3], [3], [4], [4], [4, 13], [4], [4, 5], [4, 5, 7], [4], [4, 9, 10], [4], [4], [4], [4], [4, 11], [4], [4], [4], [4, 6, 13, 14], [4], [4, 6], [4, 6], [4], [4], [4], [4], [5], [5], [5], [5], [5], [5], 
-[5], [5], [5, 10], [5], [5], [5], [5, 11], [5], [5], [5, 6, 7], [6], [6], [6, 9], [6], [6, 15], [6], [6], [6], [6], [6], [6], [6], [6, 13], [6], [6], [6, 9, 11], [6], [6], [6], [6, 10], [6], [6], [7], [7], [7], [7], [7], [7], [7], [7, 8], [7], [7], [7], [7], [7, 10], [7, 15], [7], [7], [7], [7, 11], [7], [7], [7], [7], [7], [7], [7], [7], [7], [8], [8], [8], [8], [9], [9], [9], [9], [9], [9], [9], [9, 14], [9, 13, 15], [9, 10], [9, 10], [9, 10], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [9], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 14], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [10], [11], [11], [11], [11], [11], [11], [11, 14], [11], [11, 13], [11], [11], [11], [11], [12], [12], [12], [12], [12], [12], [12], [13], [13], [13], [13], 
-[13], [13], [13], [13], [13], [13], [13], [13], [13], [13], [13], [13], [13], [13], [13], [13], [13], [14], [14], [14], [14], [14], [14], [14], [14], [14], [14], [14], [14], [14], [14], [14], [14], [14], [15], [15], [15]]
-
-t = Graph(M)
-t.dijkstra(0,4)
-
-
 
 
