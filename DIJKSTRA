@@ -32,10 +32,13 @@ listestations = [Station(i) for i in range (0, len(S))]
 
 def Dijkstra (depart, arrivee, graphe):
     
+    #On initialise toutes les distances à l'infini, sauf pour le départ
     distance = [float('inf')]*len(graphe)
     distance[depart] = 0
     noeudcourant = depart
+    #On définit parent comme le noeud d'où l'on vient quand on est au noeud courant, ce qui va nous permettre en suite de reconstituer le chemin (qui sera le plus court chemin)
     parent = [0]*len(graphe)
+    #On définit visite comme tous les noeuds qu'on a déjà visité
     visite = []
 
     while noeudcourant != arrivee :
