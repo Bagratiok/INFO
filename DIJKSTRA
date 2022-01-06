@@ -25,7 +25,8 @@ class Station:
                         self.listeligne.append(ligne[0])
                         self.listedistances.append(ligne[3][i-1])
                     break
-        
+
+#Ensemble des stations :
 listestations = [Station(i) for i in range (0, len(S))]
 
 #Algorithme de Dijkstra
