@@ -81,29 +81,6 @@ Dijkstra(93,4,listestations)
 
 
 
-#Du coup ça c'est inutile, on peut peut-être supprimer ?
-#Estelle: 
-#Créer une liste de longueur n, indiquant pour chaque station les lignes sur lesquelles elle se trouve.
-#validé, faire attention au décalage des lignes
-
-LignesStations = []
-for i in range (0, len(S)) :
-    ini = []
-    for k in range (0,16) :
-        if i in L[k][2] :
-            ini.append(k)
-    LignesStations.append(ini)
-print(LignesStations)
-
-
-
-#joséphine: j'ai fait deux questions du sujet des potes d'estelle
-
-#Importer le fichier
-#Donnees doit etre dans le meme répertoire
-import Donnees
-S, L = Donnees.S, Donnees.L
-
 #Classement des stations par ordre alphabétique
 s=[]
 for i in range (0,len(S)) :
@@ -124,10 +101,8 @@ def conversion(heure):
         new_heure = str(div) + ":" + str(reste)
         return new_heure
 
-#fin joséphine
 
-#Godfried : version modifiée le 29/12, j'ai perfectionné le programme pour éviter des erreurs et que ça soit + interactif
-#j'ai également implémenter une partie pour demander l'heure de départ
+
 
 #Moteur de recherche (arrivée/départ) :
 confirmbis = "Non"
@@ -196,6 +171,7 @@ H = input("Voulez vous partir maintenant ? Répondez Oui ou Non : ")
     else:
         heure = input("Entrez l'heure de départ (sous le format xx:xx) : ")
         print("Départ de " + depart + " prévu à " + str(conversion(heure)) + ".")
+
 
 #Afficher le plan des métro parisiens
 from PIL import Image
