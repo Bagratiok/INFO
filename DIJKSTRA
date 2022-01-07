@@ -80,6 +80,23 @@ Dijkstra(93,4,listestations)
 #Si on regarde à la fin il fait plein de changements mais techniquement c'est le plus court chemin
 
 
+#Ca renvoie l'itinéraire avec la liste des stations, selon les inputs de l'utilisateur (ce que godfried avait fait)
+
+for i in range (0,len(S)):
+    if S[i][0] == depart :
+        stationdepart = i
+    if S[i][0] == arrivee :
+        stationarrivee = i
+
+Dijkstra(stationdepart,stationarrivee,listestations)
+
+itinerairefinal = []
+for station in Dijkstra(stationdepart,stationarrivee,listestations):
+    itinerairefinal.append(S[station][0])
+print(itinerairefinal)
+
+
+
 
 #Classement des stations par ordre alphabétique
 s=[]
