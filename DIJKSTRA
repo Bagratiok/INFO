@@ -8,9 +8,9 @@ class Station:
     def __init__(self, num):
         self.nom = S[num][0]
 
-        self.listeligne = []
-        self.listevoisins = []
-        self.listedistances = []
+        self.listeligne = [] #Liste de toutes les lignes sur lesquelles se trouvent la station
+        self.listevoisins = [] #Liste de tous les voisins de la station
+        self.listedistances = [] #Liste des distances entre les voisins et la station
 
         for ligne in L :
             for i in range (0, len(ligne[2])):
@@ -79,8 +79,10 @@ Dijkstra(93,4,listestations)
 #Ca renvoie [93, 124, 123, 122, 113, 121, 120, 119, 118, 6, 5, 4] avec 93 la station Denfert-Rochereau, et 4 Nation
 #Si on regarde en vrai il fait plein de changements mais techniquement c'est le plus court chemin
 
+#Faudrait faire un truc qui affiche aussi les lignes pour chaque station
 
-#Ca renvoie l'itinéraire avec la liste des stations, selon les inputs de l'utilisateur (ce que godfried avait fait)
+
+#L'algo ci-dessous renvoie l'itinéraire avec la liste des stations (leur nom), selon les inputs de l'utilisateur (ce que godfried avait fait)
 
 for i in range (0,len(S)):
     if S[i][0] == depart :
