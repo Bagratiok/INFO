@@ -77,7 +77,7 @@ def Dijkstra (depart, arrivee, graphe):
 #Exemple entre la station Denfert-Rochereau et la station Nation :
 Dijkstra(93,4,listestations)
 #Ca renvoie [93, 124, 123, 122, 113, 121, 120, 119, 118, 6, 5, 4] avec 93 la station Denfert-Rochereau, et 4 Nation
-#Si on regarde à la fin il fait plein de changements mais techniquement c'est le plus court chemin
+#Si on regarde en vrai il fait plein de changements mais techniquement c'est le plus court chemin
 
 
 #Ca renvoie l'itinéraire avec la liste des stations, selon les inputs de l'utilisateur (ce que godfried avait fait)
