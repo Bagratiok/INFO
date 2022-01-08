@@ -197,5 +197,33 @@ H = input("Voulez vous partir maintenant ? Répondez Oui ou Non : ")
 from PIL import Image
 im = Image.open('plan_metro_paris.jpg')
 im.show()
-
+#Godfried : Création d'une liste de correspondances à utiliser après dans une fct pour renvoyer la ligne utilisée
+#semble fonctionnel mais y a des décalages et je comprends pas pourquoi, à corriger
+#liste de correspondances --> Liste C[0][12] = là où les lignes 1 et la ligne 11 se croisent
+#programme qui initialise la liste des listes
+#pour laquelle chq sous liste correspond à une ligne
+#si L[0][5] est vide ça veut dire pas de correspondances entre la 1 et la 5
+#si y a u
+C = [[[] for i in range(16)] for x in range(16)]
+print(C)
+cpt = 0
+cpt2 = 0
+while cpt != 16:
+    for k in L: #on prend une ligne
+        cpt += 1
+        cpt2 = 0
+        if cpt == 16:
+            break
+        for j in L: #on reparcourt le tableau
+            if j == k:
+                pass
+            else:
+                cpt2 += 1
+                K = k[2]
+                J = j[2]
+                for i in K:#stations de K
+                    if i in J:
+                        print(cpt,cpt2)
+                        C[cpt][cpt2].append(i)
+print(C)
 
