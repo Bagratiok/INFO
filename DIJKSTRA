@@ -3,18 +3,111 @@
 from Donnees import L, S
 
 #Je crée une classe station pour manipuler plus facilement les données
+# Stations
+#moteur de recherche
+A = ['Abbesses', 'Alexandre-Dumas', 'Alma-Marceau', 'Alésia', 'Anatole-France', 'Anvers', 'Argentine', 'Arts-et-Métiers', 'Asnières-Gennevilliers Les Courtilles', 'Assemblée Nationale', 'Aubervilliers Pantin (4 Chemins)', 'Avenue Emile-Zola', 'Avron', 'Balard', 'Barbès-Rochechouart', 'Bastille', 'Bel-Air', 'Belleville', 'Bercy', 'Bibliothèque-François Mitterrand', 'Billancourt', 'Bir-Hakeim (Grenelle)', 'Blanche', 'Bobigny-Pablo-Picasso', 'Bobigny-Pantin (Raymond Queneau)', 'Boissière', 'Bolivar', 'Bonne Nouvelle', 'Botzaris', 'Boucicaut', 'Boulogne Pont de Saint-Cloud', 'Boulogne-Jean-Jaurès', 'Bourse', 'Brochant', 'Bréguet-Sabin', 'Buttes-Chaumont', 'Buzenval', 'Bérault', 'Cadet', 'Cambronne', 'Campo-Formio', 'Cardinal-Lemoine', 'Censier-Daubenton', 'Champs-Elysées-Clémenceau', 'Charenton-Ecoles', 'Charles Michels', 'Charles de Gaulle-Etoile', 'Charonne', "Chaussée d'Antin", 'Chemin Vert', 'Chevaleret', 'Château Landon', 'Château Rouge', "Château d'Eau", 'Château de Vincennes', 'Châtelet', 'Châtillon Montrouge', 'Cité', 'Cluny-La Sorbonne', 'Colonel Fabien', 'Commerce', 'Concorde', 
+'Convention', 'Corentin-Cariou', 'Corentin-Celton', 'Corvisart', 'Cour Saint-Emilion', 'Courcelles', 'Couronnes', 'Crimée', 'Croix-de-Chavaux (Jacques Duclos)', "Créteil-L'Echat (Hôpital Henri Mondor)", 'Créteil-Préfecture (Hôtel de Ville)', 'Créteil-Université', 'Daumesnil (Félix Eboué)', 'Denfert-Rochereau', 'Dugommier', 'Dupleix', 'Duroc', 'Ecole Militaire', 'Ecole Vétérinaire de Maisons-Alfort', 'Edgar-Quinet', 'Eglise de Pantin', 'Esplanade de la Défense', 'Etienne Marcel', 'Europe', 'Exelmans', 'Faidherbe-Chaligny', 'Falguière', 'Filles du Calvaire', "Fort d'Aubervilliers", 'Franklin-Roosevelt', 'Front Populaire', 'Félix Faure', 'Gabriel-Péri', 'Gallieni (Parc de Bagnolet)', 'Gambetta', "Gare d'Austerlitz", 'Gare de Lyon', "Gare de l'Est (Verdun)", 'Gare du Nord', 'Gaîté', 'George V', 'Glacière', 'Goncourt (Hôpital Saint-Louis)', 'Grands Boulevards', 'Havre-Caumartin', 
+'Hoche', 'Hôtel de Ville', 'Invalides', 'Iéna', 'Jacques-Bonsergent', 'Jasmin', 'Jaurès', 'Javel-André-Citroen', 'Jourdain', 'Jules Joffrin', 'Jussieu', 'Kléber', 'La Chapelle', 'La Courneuve-8-Mai-1945', 'La Défense (Grande Arche)', 'La Fourche', 'La Motte-Picquet-Grenelle', 'La Muette', 'La Tour-Maubourg', 'Lamarck-Caulaincourt', 'Laumière', 'Le Kremlin-Bicêtre', 'Le Peletier', 'Ledru-Rollin', 'Les Agnettes', 'Les Gobelins', 'Les Halles', "Les Sablons (Jardin d'acclimatation)", 'Liberté', 'Liège', 'Louis Blanc', 'Louise Michel', 'Lourmel', 'Louvre-Rivoli', 'Mabillon', 'Madeleine', "Mairie d'Issy", 'Mairie de Clichy', 'Mairie de Montreuil', 'Mairie de Montrouge', 'Mairie des Lilas', 'Maison Blanche', 'Maisons-Alfort-Les Juilliottes', 'Maisons-Alfort-Stade', 'Malakoff-Plateau de Vanves', 'Malakoff-Rue Etienne Dolet', 'Malesherbes', 'Maraîchers', 'Marcadet-Poissonniers', 'Marcel Sembat', 'Marx-Dormoy', 'Maubert-Mutualité', 'Michel Bizot', 'Michel-Ange-Auteuil', 'Michel-Ange-Molitor', 'Miromesnil', 'Monceau', 'Montgallet', 'Montparnasse-Bienvenue', 'Mouton-Duvernet', 'Ménilmontant', 'Nation', 'Nationale', 'Notre-Dame de Lorette', 'Notre-Dame des Champs', 'Oberkampf', 'Odéon', 'Olympiades', 'Opéra', 'Ourcq', 'Palais-Royal (Musée du Louvre)', 'Parmentier', 'Passy', 'Pasteur', 'Pelleport', 'Pereire', 'Pernety', 'Philippe Auguste', 'Picpus', 'Pigalle', 'Place Monge (Jardin des Plantes)', "Place d'Italie", 'Place de Clichy', 'Place des Fêtes', 'Plaisance', 'Pointe du Lac', 'Poissonnière', 'Pont Marie (Cité des Arts)', 'Pont Neuf', 'Pont de Levallois-Bécon', 'Pont de Neuilly', 'Pont de Sèvres', 'Porte Dauphine (Maréchal de Lattre de Tassigny)', 
+'Porte Dorée', 'Porte Maillot', "Porte d'Orléans (Général Leclerc)", 'Porte de Bagnolet', 'Porte de Champerret', 'Porte de Charenton', 'Porte de Clichy', 'Porte de Clignancourt', 'Porte de Montreuil', 'Porte de Pantin', 'Porte de Saint-Cloud', 'Porte de Vanves', 'Porte de Versailles', 'Porte de Vincennes', 'Porte de la Chapelle', 'Porte de la Villette', 'Porte des Lilas', 'Pré-Saint-Gervais', 'Pyramides', 'Pyrénées', 'Père-Lachaise', 'Quai de la Gare', 'Quai de la Rapée', 'Quatre Septembre', 'Rambuteau', 'Ranelagh', 'Raspail', 'Rennes', 'Reuilly-Diderot', 'Richard-Lenoir', 'Richelieu-Drouot', 'Riquet', 'Robespierre', 'Rome', 'Rue Saint-Maur', 'Rue de la Pompe (Avenue Georges Mandel)', 'Rue des Boulets', 'Rue du Bac', 'Réaumur-Sébastopol', 'République', 'Saint-Ambroise', 'Saint-Augustin', 'Saint-Fargeau', 'Saint-François-Xavier', 'Saint-Georges', 'Saint-Germain des Prés', 'Saint-Jacques', 'Saint-Lazare', 'Saint-Mandé', 'Saint-Marcel', 'Saint-Michel', 'Saint-Paul (Le Marais)', 'Saint-Philippe du Roule', 'Saint-Placide', 'Saint-Sulpice', 'Saint-Sébastien-Froissart', 'Sentier', 'Simplon', 'Solférino', 'Stalingrad', 'Strasbourg-Saint-Denis', 'Sully-Morland', 'Sèvres-Babylone', 'Sèvres-Lecourbe', 'Ségur', 'Temple', 'Ternes', 'Tolbiac', "Trinité-d'Estienne d'Orves", 'Trocadéro', 'Tuileries', 'Télégraphe', 'Vaneau', 'Varenne', 'Vaugirard (Adolphe Chérioux)', 'Vavin', 'Victor Hugo', 'Villejuif-Louis Aragon', 'Villejuif-Léo Lagrange', 'Villejuif-Paul Vaillant Couturier (Hôpital Paul Brousse)', 'Villiers', 'Volontaires', 'Voltaire (Léon Blum)', 'Wagram']
+confirmbis = "Non"
+def number(station):
+    num = -1 
+    while num == -1:
+        for k in range(len(S)-1):
+                if station in S[k][0]:
+                    num = k
+    return num
+
+while confirmbis == "Non" :
+
+    n = input("Entrez la première lettre de votre station de départ (en majuscules) : ")
+
+    
+    a = 0
+    test = False
+    L1 = []
+    for i in A:
+        if n == i[0]:
+            L1.append(i)
+            print(a, i)
+            a += 1
+            test = True
+    if test == False:
+        print("Votre station n'est pas répertoriée.")
+        break
+    start = int(input("Entrez le numéro de la station de départ : "))
+    if start >= len(L1):
+        break
+    depart = L1[start]
+    confirm = input("Vous avez choisi la station de départ : " + depart + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
+    #faire peut etre une boucle while :) 
+    if confirm == "Oui":
+        start = number(depart) #je change start (puis arrival) pour que ça coïncide avec S
+        N = input("Entrez la première lettre de votre station d'arrivée (en majuscules) : ")
+        T = 0
+        test2 = False
+        L2 = []
+        for r in A:
+            if N == r[0]:
+                L2.append(r)
+                print(T, r)
+                T += 1
+                test2 = True
+        if test2 == False:
+            print("Votre station n'est pas répertioriée, veuillez recommencer.")
+            break
+        while test2 == True:
+            arrival = int(input("Entrez le numéro de la station d'arrivée : "))
+            if arrival >= len(L2):
+                break
+            arrivee = L2[arrival]
+            confirmbis = input("Vous avez choisi la station d'arrivée : " + arrivee + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
+            if confirmbis == "Non":
+                break
+            arrival = number(arrivee)
+            test2 = False
+    else :
+        break
+    print("Itinéraire : " + depart + " --> " + arrivee)
+           
+
+#J'ajoute une fonctionnalité au programme de Joséphine ; Si le voyageur veut partir maintenant
+
+    def conversion(heure): #fct fonctionne bof bof
+        if (type(heure)== str) :
+    #on fait l'hypothèse que l'heure est toujours sous la forme "xx:xx"
+            h = int(heure[0]+heure[1])
+            min = int(heure[3]+heure[4])
+            minutes = h*60 + min 
+            return minutes
+        elif (type(heure)== int):
+            div = heure//60
+            reste = heure % 60
+            new_heure = str(div) + ":" + str(reste)
+            return new_heure
+
+    H = input("Voulez vous partir maintenant ? Répondez Oui ou Non : ")
+    if H == "Oui":
+        import  datetime
+        t = datetime.datetime.now()
+        h = t.hour
+        m = t.minute
+        print("Départ de " + depart + " prévu à " + str(h) + ":" + str(m))
+    else:
+        heure = input("Entrez l'heure de départ (sous le format xx:xx) : ")
+        print("Départ de " + depart + " prévu à " + str(conversion(heure)) + ".")            
 
 class Station:
     def __init__(self, num):
-        self.nom = S[num][0]
+        self.nom = S[num][0] #nom de la station
 
-        self.listeligne = [] #Liste de toutes les lignes sur lesquelles se trouvent la station
-        self.listevoisins = [] #Liste de tous les voisins de la station
-        self.listedistances = [] #Liste des distances entre les voisins et la station
+        self.listeligne = []
+        self.listevoisins = []
+        self.listedistances = []
 
         for ligne in L :
-            for i in range (0, len(ligne[2])):
-                station = ligne[2][i]
+            for i in range (0, len(ligne[2])): #numero des stations de la ligne
+                station = ligne[2][i] #index de la station
                 if station == num :
                     if i != len(ligne[2])-1 :
                         self.listevoisins.append(ligne[2][i+1])
@@ -29,20 +122,19 @@ class Station:
 #Ensemble des stations :
 listestations = [Station(i) for i in range (0, len(S))]
 
-#Algorithme de Dijkstra
 
-def Dijkstra (depart, arrivee, graphe):
+def Dijkstra (start, arrival, graphe):
     
     #On initialise toutes les distances à l'infini, sauf pour le départ
     distance = [float('inf')]*len(graphe)
-    distance[depart] = 0
-    noeudcourant = depart
+    distance[start] = 0
+    noeudcourant = start
     #On définit parent comme le noeud d'où l'on vient quand on est au noeud courant, ce qui va nous permettre en suite de reconstituer le chemin (qui sera le plus court chemin)
     parent = [0]*len(graphe)
     #On définit visite comme tous les noeuds qu'on a déjà visité
     visite = []
 
-    while noeudcourant != arrivee :
+    while noeudcourant != arrival :
         stationcourante = graphe[noeudcourant]
         for i in range (0, len(stationcourante.listevoisins)) :
             voisin = stationcourante.listevoisins[i]
@@ -65,14 +157,20 @@ def Dijkstra (depart, arrivee, graphe):
         noeudcourant = indice_minimum
 
     itineraire = []
-    noeud = arrivee
-    while noeud != depart : 
+    noeud = arrival
+    while noeud != start : 
         itineraire.append(noeud)
         noeud = parent[noeud]
-    itineraire.append(depart)
+    itineraire.append(start)
     itineraire.reverse()
-
+    #print(lignes(itineraire))
     return (itineraire)
+
+itinerairefinal = []
+for station in Dijkstra(start,arrival,listestations):
+    itinerairefinal.append(S[station][0])
+print(itinerairefinal)
+
 
 #Exemple entre la station Denfert-Rochereau et la station Nation :
 Dijkstra(93,4,listestations)
@@ -81,149 +179,15 @@ Dijkstra(93,4,listestations)
 
 #Faudrait faire un truc qui affiche aussi les lignes pour chaque station
 
-
-#L'algo ci-dessous renvoie l'itinéraire avec la liste des stations (leur nom), selon les inputs de l'utilisateur (ce que godfried avait fait)
-
-for i in range (0,len(S)):
-    if S[i][0] == depart :
-        stationdepart = i
-    if S[i][0] == arrivee :
-        stationarrivee = i
-
-Dijkstra(stationdepart,stationarrivee,listestations)
-
-itinerairefinal = []
-for station in Dijkstra(stationdepart,stationarrivee,listestations):
-    itinerairefinal.append(S[station][0])
-print(itinerairefinal)
-
-
-
-
-#Classement des stations par ordre alphabétique
+#Classement des stations par ordre alphabétique --> Renvoie A du coup
 s=[]
 for i in range (0,len(S)) :
     s.append(S[i][0])
 s.sort()
-
-#Conversion des heures
-def conversion(heure):
-    if (type(heure)== str) :
-    #on fait l'hypothèse que l'heure est toujours sous la forme "xx:xx"
-        h = int(heure[0]+heure[1])
-        min = int(heure[3]+heure[4])
-        minutes = h*60 + min 
-        return minutes
-    elif (type(heure)== int):
-        div = heure//60
-        reste = heure % 60
-        new_heure = str(div) + ":" + str(reste)
-        return new_heure
-
-
-
-
-#Moteur de recherche (arrivée/départ) :
-confirmbis = "Non"
-
-while confirmbis == "Non" :
-
-    n = input("Entrez la première lettre de votre station de départ (en majuscules) : ")
-
-    #Estelle : est-ce que ici on peut pas utiliser s qu'on a fait juste avant ?
-    V = ['Abbesses', 'Alexandre-Dumas', 'Alma-Marceau', 'Alésia', 'Anatole-France', 'Anvers', 'Argentine', 'Arts-et-Métiers', 'Asnières-Gennevilliers Les Courtilles', 'Assemblée Nationale', 'Aubervilliers Pantin (4 Chemins)', 'Avenue Emile-Zola', 'Avron', 'Balard', 'Barbès-Rochechouart', 'Bastille', 'Bel-Air', 'Belleville', 'Bercy', 'Bibliothèque-François Mitterrand', 'Billancourt', 'Bir-Hakeim (Grenelle)', 'Blanche', 'Bobigny-Pablo-Picasso', 'Bobigny-Pantin (Raymond Queneau)', 'Boissière', 'Bolivar', 'Bonne Nouvelle', 'Botzaris', 'Boucicaut', 'Boulogne Pont de Saint-Cloud', 'Boulogne-Jean-Jaurès', 'Bourse', 'Brochant', 'Bréguet-Sabin', 'Buttes-Chaumont', 'Buzenval', 'Bérault', 'Cadet', 'Cambronne', 'Campo-Formio', 'Cardinal-Lemoine', 'Censier-Daubenton', 'Champs-Elysées-Clémenceau', 'Charenton-Ecoles', 'Charles Michels', 'Charles de Gaulle-Etoile', 'Charonne', "Chaussée d'Antin", 'Chemin Vert', 'Chevaleret', 'Château Landon', 'Château Rouge', "Château d'Eau", 'Château de Vincennes', 'Châtelet', 'Châtillon Montrouge', 'Cité', 'Cluny-La Sorbonne', 'Colonel Fabien', 'Commerce', 'Concorde', 
-'Convention', 'Corentin-Cariou', 'Corentin-Celton', 'Corvisart', 'Cour Saint-Emilion', 'Courcelles', 'Couronnes', 'Crimée', 'Croix-de-Chavaux (Jacques Duclos)', "Créteil-L'Echat (Hôpital Henri Mondor)", 'Créteil-Préfecture (Hôtel de Ville)', 'Créteil-Université', 'Daumesnil (Félix Eboué)', 'Denfert-Rochereau', 'Dugommier', 'Dupleix', 'Duroc', 'Ecole Militaire', 'Ecole Vétérinaire de Maisons-Alfort', 'Edgar-Quinet', 'Eglise de Pantin', 'Esplanade de la Défense', 'Etienne Marcel', 'Europe', 'Exelmans', 'Faidherbe-Chaligny', 'Falguière', 'Filles du Calvaire', "Fort d'Aubervilliers", 'Franklin-Roosevelt', 'Front Populaire', 'Félix Faure', 'Gabriel-Péri', 'Gallieni (Parc de Bagnolet)', 'Gambetta', "Gare d'Austerlitz", 'Gare de Lyon', "Gare de l'Est (Verdun)", 'Gare du Nord', 'Gaîté', 'George V', 'Glacière', 'Goncourt (Hôpital Saint-Louis)', 'Grands Boulevards', 'Havre-Caumartin', 
-'Hoche', 'Hôtel de Ville', 'Invalides', 'Iéna', 'Jacques-Bonsergent', 'Jasmin', 'Jaurès', 'Javel-André-Citroen', 'Jourdain', 'Jules Joffrin', 'Jussieu', 'Kléber', 'La Chapelle', 'La Courneuve-8-Mai-1945', 'La Défense (Grande Arche)', 'La Fourche', 'La Motte-Picquet-Grenelle', 'La Muette', 'La Tour-Maubourg', 'Lamarck-Caulaincourt', 'Laumière', 'Le Kremlin-Bicêtre', 'Le Peletier', 'Ledru-Rollin', 'Les Agnettes', 'Les Gobelins', 'Les Halles', "Les Sablons (Jardin d'acclimatation)", 'Liberté', 'Liège', 'Louis Blanc', 'Louise Michel', 'Lourmel', 'Louvre-Rivoli', 'Mabillon', 'Madeleine', "Mairie d'Issy", 'Mairie de Clichy', 'Mairie de Montreuil', 'Mairie de Montrouge', 'Mairie des Lilas', 'Maison Blanche', 'Maisons-Alfort-Les Juilliottes', 'Maisons-Alfort-Stade', 'Malakoff-Plateau de Vanves', 'Malakoff-Rue Etienne Dolet', 'Malesherbes', 'Maraîchers', 'Marcadet-Poissonniers', 'Marcel Sembat', 'Marx-Dormoy', 'Maubert-Mutualité', 'Michel Bizot', 'Michel-Ange-Auteuil', 'Michel-Ange-Molitor', 'Miromesnil', 'Monceau', 'Montgallet', 'Montparnasse-Bienvenue', 'Mouton-Duvernet', 'Ménilmontant', 'Nation', 'Nationale', 'Notre-Dame de Lorette', 'Notre-Dame des Champs', 'Oberkampf', 'Odéon', 'Olympiades', 'Opéra', 'Ourcq', 'Palais-Royal (Musée du Louvre)', 'Parmentier', 'Passy', 'Pasteur', 'Pelleport', 'Pereire', 'Pernety', 'Philippe Auguste', 'Picpus', 'Pigalle', 'Place Monge (Jardin des Plantes)', "Place d'Italie", 'Place de Clichy', 'Place des Fêtes', 'Plaisance', 'Pointe du Lac', 'Poissonnière', 'Pont Marie (Cité des Arts)', 'Pont Neuf', 'Pont de Levallois-Bécon', 'Pont de Neuilly', 'Pont de Sèvres', 'Porte Dauphine (Maréchal de Lattre de Tassigny)', 
-'Porte Dorée', 'Porte Maillot', "Porte d'Orléans (Général Leclerc)", 'Porte de Bagnolet', 'Porte de Champerret', 'Porte de Charenton', 'Porte de Clichy', 'Porte de Clignancourt', 'Porte de Montreuil', 'Porte de Pantin', 'Porte de Saint-Cloud', 'Porte de Vanves', 'Porte de Versailles', 'Porte de Vincennes', 'Porte de la Chapelle', 'Porte de la Villette', 'Porte des Lilas', 'Pré-Saint-Gervais', 'Pyramides', 'Pyrénées', 'Père-Lachaise', 'Quai de la Gare', 'Quai de la Rapée', 'Quatre Septembre', 'Rambuteau', 'Ranelagh', 'Raspail', 'Rennes', 'Reuilly-Diderot', 'Richard-Lenoir', 'Richelieu-Drouot', 'Riquet', 'Robespierre', 'Rome', 'Rue Saint-Maur', 'Rue de la Pompe (Avenue Georges Mandel)', 'Rue des Boulets', 'Rue du Bac', 'Réaumur-Sébastopol', 'République', 'Saint-Ambroise', 'Saint-Augustin', 'Saint-Fargeau', 'Saint-François-Xavier', 'Saint-Georges', 'Saint-Germain des Prés', 'Saint-Jacques', 'Saint-Lazare', 'Saint-Mandé', 'Saint-Marcel', 'Saint-Michel', 'Saint-Paul (Le Marais)', 'Saint-Philippe du Roule', 'Saint-Placide', 'Saint-Sulpice', 'Saint-Sébastien-Froissart', 'Sentier', 'Simplon', 'Solférino', 'Stalingrad', 'Strasbourg-Saint-Denis', 'Sully-Morland', 'Sèvres-Babylone', 'Sèvres-Lecourbe', 'Ségur', 'Temple', 'Ternes', 'Tolbiac', "Trinité-d'Estienne d'Orves", 'Trocadéro', 'Tuileries', 'Télégraphe', 'Vaneau', 'Varenne', 'Vaugirard (Adolphe Chérioux)', 'Vavin', 'Victor Hugo', 'Villejuif-Louis Aragon', 'Villejuif-Léo Lagrange', 'Villejuif-Paul Vaillant Couturier (Hôpital Paul Brousse)', 'Villiers', 'Volontaires', 'Voltaire (Léon Blum)', 'Wagram']
-    a = 0
-    test = False
-    L1 = []
-    for i in V:
-        if n == i[0]:
-            L1.append(i)
-            print(a, i)
-            a += 1
-            test = True
-    if test == False:
-        print("Votre station n'est pas répertoriée.")
-        break
-    start = int(input("Entrez le numéro de la station de départ : "))
-    if start >= len(L1):
-        break
-    depart = L1[start]
-    confirm = input("Vous avez choisi la station de départ : " + depart + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
-    if confirm == "Oui":
-        N = input("Entrez la première lettre de votre station d'arrivée (en majuscules) : ")
-        A = 0
-        test2 = False
-        L2 = []
-        for I in V:
-            if N == I[0]:
-                L2.append(I)
-                print(A, I)
-                A += 1
-                test2 = True
-        if test2 == False:
-            print("Votre station n'est pas répertioriée, veuillez recommencer.")
-            break
-        while test2 == True:
-            arrival = int(input("Entrez le numéro de la station d'arrivée : "))
-            if arrival >= len(L2):
-                break
-            arrivee = L2[arrival]
-            confirmbis = input("Vous avez choisi la station d'arrivée : " + arrivee + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
-            if confirmbis == "Non" or arrivee == depart:
-                break
-            test2 = False
-    else :
-        break
-    print("Itinéraire : " + depart + " --> " + arrivee)
-    
-#j'ai utilisé vla les breaks pck flemme de mettre des boucles partout pour s'y perdre    
-
-H = input("Voulez vous partir maintenant ? Répondez Oui ou Non : ")
-    if H == "Oui":
-        import  datetime
-        t = datetime.datetime.now()
-        h = t.hour
-        m = t.minute
-        print("Départ de " + depart + " prévu à " + str(h) + ":" + str(m))
-    else:
-        heure = input("Entrez l'heure de départ (sous le format xx:xx) : ")
-        print("Départ de " + depart + " prévu à " + str(conversion(heure)) + ".")
 
 
 #Afficher le plan des métro parisiens
 from PIL import Image
 im = Image.open('plan_metro_paris.jpg')
 im.show()
-#Godfried : Création d'une liste de correspondances à utiliser après dans une fct pour renvoyer la ligne utilisée
-#semble fonctionnel mais y a des décalages et je comprends pas pourquoi, à corriger
-#liste de correspondances --> Liste C[0][12] = là où les lignes 1 et la ligne 11 se croisent
-#programme qui initialise la liste des listes
-#pour laquelle chq sous liste correspond à une ligne
-#si L[0][5] est vide ça veut dire pas de correspondances entre la 1 et la 5
-#si y a u
-C = [[[] for i in range(16)] for x in range(16)]
-print(C)
-cpt = 0
-cpt2 = 0
-while cpt != 16:
-    for k in L: #on prend une ligne
-        cpt += 1
-        cpt2 = 0
-        if cpt == 16:
-            break
-        for j in L: #on reparcourt le tableau
-            if j == k:
-                pass
-            else:
-                cpt2 += 1
-                K = k[2]
-                J = j[2]
-                for i in K:#stations de K
-                    if i in J:
-                        print(cpt,cpt2)
-                        C[cpt][cpt2].append(i)
-print(C)
 
