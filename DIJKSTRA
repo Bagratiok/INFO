@@ -163,8 +163,46 @@ def Dijkstra (start, arrival, graphe):
         noeud = parent[noeud]
     itineraire.append(start)
     itineraire.reverse()
+    
     #print(lignes(itineraire))
-    return (itineraire)
+    
+   lignes_stations = []
+        for station in itineraire:
+            lignes_stations.append(Station(station).listeligne)
+    #on enlève les doublons
+    lignes_stations2 = [] 
+    for i in range(len(lignes_stations)):
+        for j in range(len(lignes_stations[i])):
+            lignes_stations[i][j]= int(lignes_stations[i][j])
+        lignes_stations2.append(list(set(lignes_stations[i])))
+  
+
+    lignes_itinéraire = []
+    for i in range(len(lignes_stations2)-1):
+        j = 0
+        while j < len(lignes_stations2[i]):
+            if (lignes_stations2[i][j]  not in lignes_stations2[i+1]):
+                j = j + 1
+            elif (lignes_stations2[i][j] in lignes_stations2[i+1]):
+                if (lignes_stations2[i][j] in lignes_stations2[i+2]):
+                    lignes_itinéraire.append(lignes_stations2[i][j])
+                    j = len(lignes_stations2[i])
+                    
+                else:
+                    lignes_itinéraire.append(lignes_stations2[i][j])
+                    j = j + 1
+    
+      #afficher un message avec la description des lignes à prendre
+    correspondance = []
+    for k in range(len(lignes_itinéraire)-1):
+        if lignes_itinéraire[k] != lignes_itinéraire[k+1]:
+            correspondance.append(k+1)
+    message = ''
+    for s in range(len(correspondance)):
+        message += "Prenez la ligne " + str(lignes_itinéraire[correspondance[s]-1]) + " jusqu'à la station " + str(correspondance[s]) + " puis "
+    message_d_arrivée = "Vous êtes arrivé"
+    return (itineraire, lignes_itinéraire, message, message_d_arrivée)
+    
 
 itinerairefinal = []
 for station in Dijkstra(start,arrival,listestations):
