@@ -14,7 +14,7 @@ def number(station):
     num = -1 
     while num == -1:
         for k in range(len(S)-1):
-                if station in S[k][0]:
+                if station == S[k][0]:
                     num = k
     return num
 
