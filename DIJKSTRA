@@ -208,21 +208,21 @@ def Dijkstra (start, arrival, graphe):
     message_d_arrivée = "Vous êtes arrivé"
     #A modifier: S[itineraire[s]][0] car ça ne renvoie pas la bonne station
 
-    return (itineraire, lignes_itinéraire, message, message_d_arrivée)
+    return [itineraire, lignes_itinéraire, message, message_d_arrivée]
     
 
 itinerairefinal = []
-for station in Dijkstra(start,arrival,listestations):
+for station in Dijkstra(start,arrival,listestations)[0]:
     itinerairefinal.append(S[station][0])
 print(itinerairefinal)
+print(Dijkstra(start,arrival,listestations)[2], Dijkstra(start,arrival,listestations)[3])
 
 
-#Exemple entre la station Denfert-Rochereau et la station Nation :
-Dijkstra(93,4,listestations)
-#Ca renvoie [93, 124, 123, 122, 113, 121, 120, 119, 118, 6, 5, 4] avec 93 la station Denfert-Rochereau, et 4 Nation
-#Si on regarde en vrai il fait plein de changements mais techniquement c'est le plus court chemin
+#Exemple pour Denfert-Rochereau à Nation
+['Denfert-Rochereau', 'Saint-Jacques', 'Glacière', 'Corvisart', "Place d'Italie", 'Nationale', 'Chevaleret', 'Quai de la Gare', 'Bercy', 'Gare de Lyon', 'Reuilly-Diderot', 'Nation']
+Prenez la ligne 6 jusqu'à la station Denfert-Rochereau puis Prenez la ligne 14 jusqu'à la station Saint-Jacques puis Prenez la ligne 1 jusqu'à la station Glacière puis  Vous êtes arrivé
+#A part le problème des noms de stations dans le message c'est bon je crois
 
-#Faudrait faire un truc qui affiche aussi les lignes pour chaque station
 
 #Classement des stations par ordre alphabétique --> Renvoie A du coup
 s=[]
