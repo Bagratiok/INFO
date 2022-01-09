@@ -2,7 +2,7 @@
 
 from Donnees import L, S
 
-#Je crée une classe station pour manipuler plus facilement les données
+
 # Stations
 #moteur de recherche
 A = ['Abbesses', 'Alexandre-Dumas', 'Alma-Marceau', 'Alésia', 'Anatole-France', 'Anvers', 'Argentine', 'Arts-et-Métiers', 'Asnières-Gennevilliers Les Courtilles', 'Assemblée Nationale', 'Aubervilliers Pantin (4 Chemins)', 'Avenue Emile-Zola', 'Avron', 'Balard', 'Barbès-Rochechouart', 'Bastille', 'Bel-Air', 'Belleville', 'Bercy', 'Bibliothèque-François Mitterrand', 'Billancourt', 'Bir-Hakeim (Grenelle)', 'Blanche', 'Bobigny-Pablo-Picasso', 'Bobigny-Pantin (Raymond Queneau)', 'Boissière', 'Bolivar', 'Bonne Nouvelle', 'Botzaris', 'Boucicaut', 'Boulogne Pont de Saint-Cloud', 'Boulogne-Jean-Jaurès', 'Bourse', 'Brochant', 'Bréguet-Sabin', 'Buttes-Chaumont', 'Buzenval', 'Bérault', 'Cadet', 'Cambronne', 'Campo-Formio', 'Cardinal-Lemoine', 'Censier-Daubenton', 'Champs-Elysées-Clémenceau', 'Charenton-Ecoles', 'Charles Michels', 'Charles de Gaulle-Etoile', 'Charonne', "Chaussée d'Antin", 'Chemin Vert', 'Chevaleret', 'Château Landon', 'Château Rouge', "Château d'Eau", 'Château de Vincennes', 'Châtelet', 'Châtillon Montrouge', 'Cité', 'Cluny-La Sorbonne', 'Colonel Fabien', 'Commerce', 'Concorde', 
@@ -97,6 +97,8 @@ while confirmbis == "Non" :
         heure = input("Entrez l'heure de départ (sous le format xx:xx) : ")
         print("Départ de " + depart + " prévu à " + str(conversion(heure)) + ".")            
 
+
+#Je crée une classe station pour manipuler plus facilement les données
 class Station:
     def __init__(self, num):
         self.nom = S[num][0] #nom de la station
