@@ -199,10 +199,15 @@ def Dijkstra (start, arrival, graphe):
     for k in range(len(lignes_itinéraire)-1):
         if lignes_itinéraire[k] != lignes_itinéraire[k+1]:
             correspondance.append(k+1)
+    if lignes_itinéraire[len(lignes_itinéraire)-2] == lignes_itinéraire[len(lignes_itinéraire)-1]:
+        correspondance.append(len(lignes_itinéraire)-1)
+    
     message = ''
     for s in range(len(correspondance)):
-        message += "Prenez la ligne " + str(lignes_itinéraire[correspondance[s]-1]) + " jusqu'à la station " + str(correspondance[s]) + " puis "
+        message += "Prenez la ligne " + str(lignes_itinéraire[correspondance[s]-1]) + " jusqu'à la station " + S[itineraire[s]][0] + " puis "
     message_d_arrivée = "Vous êtes arrivé"
+    #A modifier: S[itineraire[s]][0] car ça ne renvoie pas la bonne station
+
     return (itineraire, lignes_itinéraire, message, message_d_arrivée)
     
 
