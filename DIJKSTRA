@@ -168,8 +168,8 @@ def Dijkstra (start, arrival, graphe):
     
     #print(lignes(itineraire))
     
-   lignes_stations = []
-        for station in itineraire:
+    lignes_stations = []
+    for station in itineraire:
             lignes_stations.append(Station(station).listeligne)
     #on enlève les doublons
     lignes_stations2 = [] 
