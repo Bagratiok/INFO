@@ -1,14 +1,10 @@
 #Créer un dossier avec le jeu de données, l'image du plan des métros etc pour que ce soit plus simple (on leu envoie tout le dossier directement)
 
-from Donnees import L, S
+from Donnees import L, S, A
 
 
 # Stations
 #moteur de recherche
-A = ['Abbesses', 'Alexandre-Dumas', 'Alma-Marceau', 'Alésia', 'Anatole-France', 'Anvers', 'Argentine', 'Arts-et-Métiers', 'Asnières-Gennevilliers Les Courtilles', 'Assemblée Nationale', 'Aubervilliers Pantin (4 Chemins)', 'Avenue Emile-Zola', 'Avron', 'Balard', 'Barbès-Rochechouart', 'Bastille', 'Bel-Air', 'Belleville', 'Bercy', 'Bibliothèque-François Mitterrand', 'Billancourt', 'Bir-Hakeim (Grenelle)', 'Blanche', 'Bobigny-Pablo-Picasso', 'Bobigny-Pantin (Raymond Queneau)', 'Boissière', 'Bolivar', 'Bonne Nouvelle', 'Botzaris', 'Boucicaut', 'Boulogne Pont de Saint-Cloud', 'Boulogne-Jean-Jaurès', 'Bourse', 'Brochant', 'Bréguet-Sabin', 'Buttes-Chaumont', 'Buzenval', 'Bérault', 'Cadet', 'Cambronne', 'Campo-Formio', 'Cardinal-Lemoine', 'Censier-Daubenton', 'Champs-Elysées-Clémenceau', 'Charenton-Ecoles', 'Charles Michels', 'Charles de Gaulle-Etoile', 'Charonne', "Chaussée d'Antin", 'Chemin Vert', 'Chevaleret', 'Château Landon', 'Château Rouge', "Château d'Eau", 'Château de Vincennes', 'Châtelet', 'Châtillon Montrouge', 'Cité', 'Cluny-La Sorbonne', 'Colonel Fabien', 'Commerce', 'Concorde', 
-'Convention', 'Corentin-Cariou', 'Corentin-Celton', 'Corvisart', 'Cour Saint-Emilion', 'Courcelles', 'Couronnes', 'Crimée', 'Croix-de-Chavaux (Jacques Duclos)', "Créteil-L'Echat (Hôpital Henri Mondor)", 'Créteil-Préfecture (Hôtel de Ville)', 'Créteil-Université', 'Daumesnil (Félix Eboué)', 'Denfert-Rochereau', 'Dugommier', 'Dupleix', 'Duroc', 'Ecole Militaire', 'Ecole Vétérinaire de Maisons-Alfort', 'Edgar-Quinet', 'Eglise de Pantin', 'Esplanade de la Défense', 'Etienne Marcel', 'Europe', 'Exelmans', 'Faidherbe-Chaligny', 'Falguière', 'Filles du Calvaire', "Fort d'Aubervilliers", 'Franklin-Roosevelt', 'Front Populaire', 'Félix Faure', 'Gabriel-Péri', 'Gallieni (Parc de Bagnolet)', 'Gambetta', "Gare d'Austerlitz", 'Gare de Lyon', "Gare de l'Est (Verdun)", 'Gare du Nord', 'Gaîté', 'George V', 'Glacière', 'Goncourt (Hôpital Saint-Louis)', 'Grands Boulevards', 'Havre-Caumartin', 
-'Hoche', 'Hôtel de Ville', 'Invalides', 'Iéna', 'Jacques-Bonsergent', 'Jasmin', 'Jaurès', 'Javel-André-Citroen', 'Jourdain', 'Jules Joffrin', 'Jussieu', 'Kléber', 'La Chapelle', 'La Courneuve-8-Mai-1945', 'La Défense (Grande Arche)', 'La Fourche', 'La Motte-Picquet-Grenelle', 'La Muette', 'La Tour-Maubourg', 'Lamarck-Caulaincourt', 'Laumière', 'Le Kremlin-Bicêtre', 'Le Peletier', 'Ledru-Rollin', 'Les Agnettes', 'Les Gobelins', 'Les Halles', "Les Sablons (Jardin d'acclimatation)", 'Liberté', 'Liège', 'Louis Blanc', 'Louise Michel', 'Lourmel', 'Louvre-Rivoli', 'Mabillon', 'Madeleine', "Mairie d'Issy", 'Mairie de Clichy', 'Mairie de Montreuil', 'Mairie de Montrouge', 'Mairie des Lilas', 'Maison Blanche', 'Maisons-Alfort-Les Juilliottes', 'Maisons-Alfort-Stade', 'Malakoff-Plateau de Vanves', 'Malakoff-Rue Etienne Dolet', 'Malesherbes', 'Maraîchers', 'Marcadet-Poissonniers', 'Marcel Sembat', 'Marx-Dormoy', 'Maubert-Mutualité', 'Michel Bizot', 'Michel-Ange-Auteuil', 'Michel-Ange-Molitor', 'Miromesnil', 'Monceau', 'Montgallet', 'Montparnasse-Bienvenue', 'Mouton-Duvernet', 'Ménilmontant', 'Nation', 'Nationale', 'Notre-Dame de Lorette', 'Notre-Dame des Champs', 'Oberkampf', 'Odéon', 'Olympiades', 'Opéra', 'Ourcq', 'Palais-Royal (Musée du Louvre)', 'Parmentier', 'Passy', 'Pasteur', 'Pelleport', 'Pereire', 'Pernety', 'Philippe Auguste', 'Picpus', 'Pigalle', 'Place Monge (Jardin des Plantes)', "Place d'Italie", 'Place de Clichy', 'Place des Fêtes', 'Plaisance', 'Pointe du Lac', 'Poissonnière', 'Pont Marie (Cité des Arts)', 'Pont Neuf', 'Pont de Levallois-Bécon', 'Pont de Neuilly', 'Pont de Sèvres', 'Porte Dauphine (Maréchal de Lattre de Tassigny)', 
-'Porte Dorée', 'Porte Maillot', "Porte d'Orléans (Général Leclerc)", 'Porte de Bagnolet', 'Porte de Champerret', 'Porte de Charenton', 'Porte de Clichy', 'Porte de Clignancourt', 'Porte de Montreuil', 'Porte de Pantin', 'Porte de Saint-Cloud', 'Porte de Vanves', 'Porte de Versailles', 'Porte de Vincennes', 'Porte de la Chapelle', 'Porte de la Villette', 'Porte des Lilas', 'Pré-Saint-Gervais', 'Pyramides', 'Pyrénées', 'Père-Lachaise', 'Quai de la Gare', 'Quai de la Rapée', 'Quatre Septembre', 'Rambuteau', 'Ranelagh', 'Raspail', 'Rennes', 'Reuilly-Diderot', 'Richard-Lenoir', 'Richelieu-Drouot', 'Riquet', 'Robespierre', 'Rome', 'Rue Saint-Maur', 'Rue de la Pompe (Avenue Georges Mandel)', 'Rue des Boulets', 'Rue du Bac', 'Réaumur-Sébastopol', 'République', 'Saint-Ambroise', 'Saint-Augustin', 'Saint-Fargeau', 'Saint-François-Xavier', 'Saint-Georges', 'Saint-Germain des Prés', 'Saint-Jacques', 'Saint-Lazare', 'Saint-Mandé', 'Saint-Marcel', 'Saint-Michel', 'Saint-Paul (Le Marais)', 'Saint-Philippe du Roule', 'Saint-Placide', 'Saint-Sulpice', 'Saint-Sébastien-Froissart', 'Sentier', 'Simplon', 'Solférino', 'Stalingrad', 'Strasbourg-Saint-Denis', 'Sully-Morland', 'Sèvres-Babylone', 'Sèvres-Lecourbe', 'Ségur', 'Temple', 'Ternes', 'Tolbiac', "Trinité-d'Estienne d'Orves", 'Trocadéro', 'Tuileries', 'Télégraphe', 'Vaneau', 'Varenne', 'Vaugirard (Adolphe Chérioux)', 'Vavin', 'Victor Hugo', 'Villejuif-Louis Aragon', 'Villejuif-Léo Lagrange', 'Villejuif-Paul Vaillant Couturier (Hôpital Paul Brousse)', 'Villiers', 'Volontaires', 'Voltaire (Léon Blum)', 'Wagram']
 confirmbis = "Non"
 def number(station):
     num = -1 
@@ -39,8 +35,7 @@ while confirmbis == "Non" :
     if start >= len(L1):
         break
     depart = L1[start]
-    confirm = input("Vous avez choisi la station de départ : " + depart + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ")
-    #faire peut etre une boucle while :) 
+    confirm = input("Vous avez choisi la station de départ : " + depart + " ; Confirmez - vous votre choix ? Entrez Oui ou Non : ") 
     if confirm == "Oui":
         start = number(depart) #je change start (puis arrival) pour que ça coïncide avec S
         N = input("Entrez la première lettre de votre station d'arrivée (en majuscules) : ")
@@ -71,9 +66,9 @@ while confirmbis == "Non" :
     print("Itinéraire : " + depart + " --> " + arrivee)
            
 
-#J'ajoute une fonctionnalité au programme de Joséphine ; Si le voyageur veut partir maintenant
+#Si le voyageur veut partir maintenant
 
-    def conversion(heure): #fct fonctionne bof bof
+    def conversion(heure): #La fonction fonctionne bien ? Vérif
         if (type(heure)== str) :
     #on fait l'hypothèse que l'heure est toujours sous la forme "xx:xx"
             h = int(heure[0]+heure[1])
