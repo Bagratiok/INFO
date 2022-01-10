@@ -166,19 +166,24 @@ def Dijkstra (start, arrival, graphe):
     itineraire.append(start)
     itineraire.reverse()
     
-    #print(lignes(itineraire))
-    
+    #Lignes_stations renvoie toutes les lignes pour chaque station
     lignes_stations = []
     for station in itineraire:
             lignes_stations.append(Station(station).listeligne)
-    #on enlève les doublons
-    lignes_stations2 = [] 
+    #On enlève les doublons
+    lignes_stations2 = []
     for i in range(len(lignes_stations)):
-        for j in range(len(lignes_stations[i])):
-            lignes_stations[i][j]= int(lignes_stations[i][j])
-        lignes_stations2.append(list(set(lignes_stations[i])))
-  
+        l = []
+        for j in range (len(lignes_stations[i])):
+            if j == len(lignes_stations[i])-1 :
+                l.append(lignes_stations[i][j])
+            else :
+                if lignes_stations[i][j] != lignes_stations[i][j+1] :
+                    l.append(lignes_stations[i][j])
+        lignes_stations2.append(l)
 
+
+    #Lignes_itinéraire renvoie la liste des lignes qu'on va prendre (à chaque station)
     lignes_itinéraire = []
     for i in range(len(lignes_stations2)-1):
         j = 0
@@ -187,9 +192,9 @@ def Dijkstra (start, arrival, graphe):
                 j = j + 1
             elif (lignes_stations2[i][j] in lignes_stations2[i+1]):
                 lignes_itinéraire.append(lignes_stations2[i][j])
-                j = j + 1
-    
-      #afficher un message avec la description des lignes à prendre
+                break
+
+    #Correspondance affiche les indices des stations dans itinéraire où on fait des changements
     correspondance = []
     for k in range(len(lignes_itinéraire)-1):
         if lignes_itinéraire[k] != lignes_itinéraire[k+1]:
@@ -197,15 +202,16 @@ def Dijkstra (start, arrival, graphe):
     #Il faut ajouter un cas si les deux derniers sont égaux, car si oui ça ne le met pas dans la liste
     if lignes_itinéraire[len(lignes_itinéraire)-2] == lignes_itinéraire[len(lignes_itinéraire)-1]:
         correspondance.append(len(lignes_itinéraire))
-    
+
+    #Afficher un message avec la description des lignes à prendre
     message = ''
     for s in range(len(correspondance)):
-        message += "Prenez la ligne " + str(lignes_itinéraire[correspondance[s]-1]) + " jusqu'à la station " + S[itineraire[correspondance[s]]][0] + " puis "
+        message += "Prenez la ligne " + lignes_itinéraire[correspondance[s]-1] + " jusqu'à la station " + S[itineraire[correspondance[s]]][0] + " puis "
     message_d_arrivée = "Vous êtes arrivé"
 
     return [itineraire, lignes_itinéraire, message, message_d_arrivée]
     
-
+#Afficher l'itinéraire final
 itinerairefinal = []
 for station in Dijkstra(start,arrival,listestations)[0]:
     itinerairefinal.append(S[station][0])
@@ -213,10 +219,11 @@ print(itinerairefinal)
 print(Dijkstra(start,arrival,listestations)[2], Dijkstra(start,arrival,listestations)[3])
 
 
-#Exemple pour Denfert-Rochereau à Nation
-['Denfert-Rochereau', 'Saint-Jacques', 'Glacière', 'Corvisart', "Place d'Italie", 'Nationale', 'Chevaleret', 'Quai de la Gare', 'Bercy', 'Gare de Lyon', 'Reuilly-Diderot', 'Nation']
-Prenez la ligne 6 jusqu'à la station Denfert-Rochereau puis Prenez la ligne 14 jusqu'à la station Saint-Jacques puis Prenez la ligne 1 jusqu'à la station Glacière puis  Vous êtes arrivé
-#A part le problème des noms de stations dans le message c'est bon je crois
+Exemple de Vavin à Saint-Paul :
+Itinéraire : Vavin --> Saint-Paul (Le Marais)
+Départ de Vavin prévu à 15:35
+['Vavin', 'Montparnasse-Bienvenue', 'Saint-Placide', 'Saint-Sulpice', 'Saint-Germain des Prés', 'Odéon', 'Saint-Michel', 'Cité', 'Châtelet', 'Hôtel de Ville', 'Saint-Paul (Le Marais)']
+Prenez la ligne 4 jusqu'à la station Châtelet puis Prenez la ligne 1 jusqu'à la station Saint-Paul (Le Marais) puis  Vous êtes arrivé
 
 
 #Classement des stations par ordre alphabétique --> Renvoie A du coup
