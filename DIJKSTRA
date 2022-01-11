@@ -175,6 +175,9 @@ def Dijkstra (start, arrival, graphe):
             else :
                 if lignes_stations[i][j] != lignes_stations[i][j+1] :
                     l.append(lignes_stations[i][j])
+            if len(lignes_stations[i]) > 2 :
+                if lignes_stations[i][len(lignes_stations[i])-2] == lignes_stations[i][len(lignes_stations[i])-1]:
+                    l.append(lignes_stations[i][len(lignes_stations[i][j])])
         lignes_stations2.append(l)
 
 
