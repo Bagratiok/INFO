@@ -194,10 +194,11 @@ def Dijkstra (start, arrival, graphe):
     for k in range(len(lignes_itinéraire)-1):
         if lignes_itinéraire[k] != lignes_itinéraire[k+1]:
             correspondance.append(k+1)
-    #Il faut ajouter un cas si les deux derniers sont égaux, car si oui ça ne le met pas dans la liste
     if lignes_itinéraire[len(lignes_itinéraire)-2] == lignes_itinéraire[len(lignes_itinéraire)-1]:
         correspondance.append(len(lignes_itinéraire))
-
+    if lignes_itinéraire[len(lignes_itinéraire)-2] != lignes_itinéraire[len(lignes_itinéraire)-1]:
+        correspondance.append(len(lignes_itinéraire))
+        
     #Afficher un message avec la description des lignes à prendre
     message = ''
     for s in range(len(correspondance)):
